@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Michael Jordan</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/1f9b738dbf.js" crossorigin="anonymous"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        // Agrego efecto de difuminado con JQuery sobre reproductor de video
+        $(document).ready(function(){
+            $('.play').click(function () {
+                if($(this).parent().prev().get(0).paused){
+                    $(this).parent().prev().get(0).play();
+                    $(this).parent().prev().removeClass('blurEffect');
+                    $('.contenedor-play').hide();
+                }
+            });
+
+            $('.video').on('ended',function(){
+                $(this).addClass('blurEffect');
+            $('.contenedor-play').show();
+            });
+        })
+    </script>
+
+</head>
+<body>
+    <header>
+        <div class="contenedor contenedor-header">
+            <img id="logo" src="imagenes/jordan-logo.jpg" alt="Logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html" title="Página Principal">INICIO</a></li>
+                    <li><a href="bio.html" title="Ver Biografía">BIOGRAFIA</a></li>
+                    <li><a href="galeria.html" title="Ver Galería">GALERIA</a></li>
+                    <li><a href="logros.html" title="Ver Logros">LOGROS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <main>
+        <div class="contenedor">
+            <h1> Galería </h1>
+        </div>
+        <div class="galeria contenedor">
+            <ul>
+                <li>
+                    <img src="https://i.pinimg.com/originals/47/88/3b/47883bbbf6af57848e89848ab766ef0c.jpg" alt="Michael Jordan en la Universidad">
+                    Michael Jordan en la <br> Universidad
+                </li>
+                <li>
+                    <img src="https://as.com/baloncesto/imagenes/2014/10/03/album/1412357845_036866_1412377877_album_grande.jpg" alt="Primeros años en los Chicago Bulls">
+                    Primeros años en los <br> Chicago Bulls
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="https://i.promecal.es/IMG/2020/7FA6E9FD-B00A-7640-1C849039A72AA080.JPG" alt="Campeon Slam-Dunk 1988" style="border-style:inset;">
+                    Campeón por segunda ocasión en el concurso de clavadas, <br><cite>“Slam-Dunk”</cite> <br> (1988)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="https://i.pinimg.com/originals/33/3a/10/333a10c8c6c9c172251455dd72b8f333.jpg" alt="Sexto campeonato ganado en 1998">
+                    Ganó sexto campeonato ante los “Utah Jazz” lanzando un tiro faltando 7 segundos <br>(1998)
+                </li>
+                <li>
+                    <img src="http://www.donbaloncesto.com/wp-content/uploads/2016/10/MJ-clavando-el-balon...jpg" alt="">
+                    Una de sus tantas demostraciones <br> de habilidad
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="https://www.netflix.com/ar/title/80203144" title="Serie Netflix" target="_blank" >
+                        <img src="https://www.fuikaomar.es/img/ybc_blog/post/34bc702229-1000x500.jpg" alt="Documental Last Dance" style="border-style:inset;">
+                    </a>
+                    Lanzamiento de la serie-documental <br><cite>"The Last Dance"</cite>
+                    
+                </li>
+            </ul>
+
+            <ul id="ul-video">
+                <li>
+                    <div class="reproductor" >
+                        <video id="video-top10plays" class="video blurEffect" controls="true" width="75%">
+                            <source src="videos/Michael_Jordan-Top10Plays.mp4" type="video/mp4" />
+                            <span>&#9888;</span> Su navegador no soporta la reproducción de videos HTML5.
+                            <br> Descargue el video <a href="videos/Michael_Jordan-Top10Plays.mp4">aquí</a>.
+                        </video>
+                        <div class="contenedor-play">
+                            <div class="play">►</div>
+                            <h1 style="margin: 0;">Inicia el Video</h1>
+                            <p style="text-align: center;font-weight: bold; color:gray">Top 10 Jugadas</p>
+                        </div>
+                        <br>
+                    </div>
+                    <button onclick="videoChico()">Reducir</button>
+                    <button onclick="videoNormal()">Normal</button>
+                    <button onclick="videoGrande()">Ampliar</button>
+                    
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <i class="fa-regular fa-copyright"></i>Copyright <span id="anioActual"></span>. 
+            Diseñado por <i class="fa-brands fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/nahueltarello/" 
+                title="Perfil en LinkedIn de Nahuel Tarello" 
+                target="_blank">Nahuel Tarello</a><br />
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a><br>
+            <a href="mailto: nahuel.tarello@gmail.com">Contactanos</a><br>
+        </div>
+    </footer>
+
+    <script> 
+        var mivideo = document.getElementById("video-top10plays");
+        
+        function videoNormal() { 
+            mivideo.style.width = "75%";
+            mivideo.style.fontSize = "75%";
+        }
+
+        function videoGrande() { 
+            mivideo.style.width = "100%";
+            mivideo.style.fontSize = "100%";
+        } 
+        
+        function videoChico() { 
+            mivideo.style.width = "65%";
+            mivideo.style.fontSize = "65%";
+        } 
+    </script>
+</body>
+
+</html>

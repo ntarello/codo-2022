@@ -1,0 +1,428 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+* { 
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* variables globales */
+:root {
+    --color-principal: rgb(168, 0, 0);
+    --color-secundario: #333333;
+}
+
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--color-secundario);
+    font-size: 1.2rem;
+    line-height: 1.4em;
+}
+
+p,h2 { margin-bottom: 1.6em; }
+
+p { text-align: justify; }
+
+h1 {
+    font-size: 2.5em;
+    line-height: 1.3em;
+    margin: 1.3em 0;
+    text-align: center;
+    font-weight: 600;
+    color: #1b1b1b; 
+    text-shadow: 0 0 3px red, 0 0 20px var(--color-secundario);
+}
+
+h2 { 
+    font-size: 1.7em; 
+    margin-left: 7%;
+    color: var(--color-principal);
+    text-shadow: 3px 0 2px var(--color-secundario);
+}
+
+h3 { font-style: italic; margin-bottom: 0.5em;}
+
+
+.contenedor {
+    display: block;
+    position: relative;
+    max-width: 90%;
+}
+
+@media screen and (max-width: 480px) {
+    .contenedor {
+      width: 80%;
+    }
+  }
+
+.contenedor-header {
+    height: 120px;
+}
+
+
+/* Cabecera */
+header {
+    background: var(--color-secundario);
+    color: whitesmoke;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+header a {
+    color:whitesmoke;
+    text-decoration: none;
+}
+
+#logo {
+    float: left;
+    height:auto;
+}
+
+@supports(object-fit: cover){
+    /* Hago que se ajuste al contenedor de la cabecera */
+    #logo {
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+
+/* Barra de navegación */
+nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul {
+    display: flex;
+    float: right; 
+    list-style: none;
+    margin-top: 0.5rem;
+}
+nav ul li {
+    display: inline-block;
+    font-size: 1em; 
+    padding: 0.5rem;
+    white-space: nowrap;
+    margin: 0 10px;
+}
+nav ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: all 0.5s linear;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    background: lightgrey;
+    color: var(--color-principal);
+}
+
+
+/* Corte para celulares pequeños */
+@media screen and (max-width: 400px) {
+    nav ul li a {
+        padding: 0.5rem 0.5rem;
+    }
+
+}
+/* Corte para celulares grandes y tablets */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+
+/* Cuerpo principal */
+main {
+    padding: 10rem 0 2rem 0;
+}
+
+main img {
+    width: 100%;
+}
+
+/* Pie de página */
+footer {
+    background: #f2f2f2;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+footer a {
+    text-decoration: none;
+    color: var(--color-principal);
+}
+
+
+/* Formulario de contacto */
+form {
+    max-width: 600px;
+    text-align: center;
+    margin: 20px auto;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background-color:burlywood;
+}
+
+form p {
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+form input, textarea, button{
+    background-color: #fbfbfb;
+    border: 0;
+    border-radius: 0.5em;
+    outline: 0;
+    padding: 1em;
+    display: block;
+    width: 100%;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    resize: none;
+}
+
+form input:focus, textarea:focus{
+	outline: 0;
+    box-shadow: 0 0px 4px #e74d3c !important;
+}
+
+form input{
+    height: 2rem;
+}
+
+form textarea{
+    height: 150px;  
+    padding-top: 15px;
+    resize:vertical;
+}
+
+form label{
+    display: block;
+    float: center;
+    position: relative;
+}
+
+form input[type="radio"]{
+    display: inline-flex;
+    width:1em;
+    box-shadow: none;
+    margin-left: 1em;
+}
+
+.etiqueta-selector {
+    display: inline-flex;
+    cursor: pointer;
+    transition: all 0.25s linear;
+    -webkit-transition: all 0.25s linear;
+}
+
+.etiqueta-selector:hover {
+    color: #FFFFFF;
+}
+
+#btnEnviarFormContacto{
+	color: white;
+    background: #e74c3c;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 1em;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#btnEnviarFormContacto:hover {
+    box-shadow: 0 2px 2px 2px rgba(170, 170, 170, 0.6);
+    background: #e15c4e;
+    font-weight: normal;
+}
+
+.aviso {
+    font-style: italic;
+    font-size: 70%;
+}
+
+.mitad {
+    float: left;
+    width: 48%;
+    margin-bottom: 1em;
+}
+
+.izquierda {
+    margin-right: 2%;
+}
+
+.derecha {
+    width: 50%;
+}
+
+@media screen and (max-width: 480px) {
+    .mitad {
+        width: 100%;
+        float: none;
+        margin-bottom: 0;
+    }
+}
+
+/* Acomoda formulario */
+.autoajustar:before,
+.autoajustar:after {
+  content: " ";
+  clear: both;
+  display: table;
+}
+
+section { 
+    padding: 4em 0;
+}
+
+.galeria {
+    padding: 1rem 0;
+}
+
+.galeria ul {
+    display: table;
+    list-style: none;
+    margin-top: 1rem;
+    justify-content: space-between;
+    width: 100%;
+}
+.galeria ul li {
+    display: table-cell;
+    width: 33%;
+    text-align: center;
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+}
+
+.galeria ul li img,video {
+    display: block;
+    border: 4px outset lightslategray;
+    border-radius: 6px;
+}
+
+table {
+    text-align: center;
+    border-spacing: 2px;
+    color: antiquewhite;
+}
+
+td { 
+    padding: 1.2rem 0.5rem; width: 40%;
+    border-bottom: 3px dotted black;
+}
+
+th { 
+    font-size: 1.8rem;
+    border: 5px ridge darkgoldenrod;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 15px;
+    background-color: lightgray;
+}
+
+.td-divisor { border-bottom: 4px double grey; }
+
+#tr-back tr:nth-child(even){
+    background: url(imagenes/Air-Jordan-Logo.jpg) top center repeat-x #000000;
+}
+
+#tr-back tr:nth-child(odd){
+    background: url(imagenes/Air-Jordan-Logo.jpg) bottom center repeat-x #000000;
+}
+
+#lienzoMapa {
+    height: 600px;
+    width: 100%;
+    border: 4px outset lightslategray;
+    border-radius: 6px;
+}
+
+@media screen and (max-width: 480px) {
+    #lienzoMapa {
+        height: 400px;
+    }
+}
+
+.reproductor {
+    position: relative;
+    display: inline-block;
+    padding: 5rem 0 2rem 0;
+    font-size: 100%;
+}
+
+#ul-video button{
+    border: 1px solid #ccc; 
+    padding: 5px; 
+    border-radius: 10px; 
+    width: 60px; 
+    margin: 0 10px 0 0;
+    cursor: pointer;
+    display: unset;
+}
+
+.blurEffect {
+    -webkit-filter: blur(6px);
+    -o-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -ms-filter: blur(6px);
+    filter: blur(6px);
+}
+
+.contenedor-play {
+    position: absolute;
+    display: inline-block;
+    /* Centro el botón de Play */
+    transform: translate(-50%,-50%); 
+    top: 50%;
+    bottom: 15%;
+    left: 50%;
+    right: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 900;
+}
+
+.play{
+    box-sizing: content-box;
+    display: inline-block;
+    cursor: pointer;
+    width:35px;
+    background-color: var(--color-secundario);
+    border: 1px solid #FFF;
+    color: #ccc;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 50px;
+    line-height: 32px;
+  }
+
+.play:hover {
+    color: var(--color-principal);
+}

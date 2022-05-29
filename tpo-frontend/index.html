@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Jordan</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/1f9b738dbf.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        
+        // $(document).ready(function() {
+        //         $("form").submit(function() {
+        //             alert("Form submitted Successfully");
+        //         });
+        // });
+        $(document).ready(function() {
+                var isValid = true,
+                    formulario = document.getElementById('formularioContacto');
+
+                var validarNombre = function(e){
+                    if (formulario.nombre.value == 0){
+                        alert("Complete el campo nombre");
+                        isValid = false;
+                    } else if (formulario.nombre.value.length > 30){
+                        alert("El campo nombre no puede exceder los 30 caracteres");
+                        isValid = false;
+                    }
+                };
+
+                var validarRadio = function(e){
+                    if (formulario.selectorSexo[0].checked == true || 
+                        formulario.selectorSexo[1].checked == true || 
+                        formulario.selectorSexo[2].checked == true){
+                    } else{
+                        alert("Complete el campo sexo");
+                        isValid = false;
+                    }
+                };
+
+                
+                var validarEmail = function(e){
+                    if (formulario.email.value == 0){
+                        alert("Complete el campo email");
+                        isValid = false;
+                    } else if (formulario.nombre.value.length > 30){
+                        alert("El campo email no puede exceder los 30 caracteres");
+                        isValid = false;
+                    } else if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(formulario.email.value) != true){
+                        alert("La dirección de email es incorrecta");
+                        isValid = false;
+                    } else {
+                        alert("La dirección de email es correcta");
+                    }
+                };
+                
+                var validarAsunto = function(e){
+                    if (formulario.asunto.value == 0){
+                        alert("Complete el campo asunto");
+                        isValid = false;
+                    } else if (formulario.asunto.value.length > 30){
+                        alert("El campo asunto no puede exceder los 30 caracteres");
+                        isValid = false;
+                    }
+                };
+                
+
+                var validarFormulario = function(e){
+                    validarNombre(e);
+                    validarRadio(e);
+                    validarEmail(e);
+                    validarAsunto(e);
+                    // Evito el submit independientemente del resultado
+                    e.preventDefault();
+                    if(isValid){
+                        // Ejecuta el submit
+                        enviarFormContacto();
+                    } else {
+                        // No ejecuta el submit
+                        isValid = true;
+                    }
+                };
+
+                // Capturo evento submit para previamente ejecutar validaciones
+                formulario.addEventListener("submit", validarFormulario);
+
+            });
+        
+        function enviarFormContacto() {
+            // Simulo el envío de mensajes apendeando un Json en el localStorage
+            if (typeof(Storage) !== "undefined") {
+            if (localStorage.contadorMensajes) {
+                localStorage.contadorMensajes = Number(localStorage.contadorMensajes)+1;
+                var mensajes = JSON.parse(localStorage.getItem("mensajes"));
+            } else {
+                localStorage.contadorMensajes = 1;
+                var mensajes = [];
+            }
+            var nuevoMensaje = {
+                    id: localStorage.contadorMensajes,
+                    nombre: document.getElementById("nombre").value,
+                    sexo: document.querySelector("input[type='radio'][name='selectorSexo']:checked").value,
+                    email: document.getElementById("email").value,
+                    asunto: document.getElementById("asunto").value,
+                    contenido: document.getElementById("mensaje").value,
+                }
+            mensajes.push(nuevoMensaje)
+            localStorage.setItem("mensajes", JSON.stringify(mensajes));
+            var mensajesGuardados = JSON.parse(localStorage.getItem("mensajes"));
+            console.log(mensajesGuardados);
+            document.getElementById("resultado").innerHTML = "Gracias por contactarnos!";
+          } else {
+            // Cuando el navegador no soporta la función de web storage
+            document.getElementById("resultado").innerHTML = "Disculpe, esta función no está disponible para su navegador actual...";
+          }
+          // Fuerzo el submit
+          $("#formularioContacto").submit();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="contenedor contenedor-header">
+            <img id="logo" src="imagenes/jordan-logo.jpg" alt="Logo">
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html" title="Página Principal">INICIO</a></li>
+                    <li><a href="bio.html" title="Ver Biografía">BIOGRAFIA</a></li>
+                    <li><a href="galeria.html" title="Ver Galería">GALERIA</a></li>
+                    <li><a href="logros.html" title="Ver Logros">LOGROS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <main>
+        <div class="contenedor">
+            <h1> Michael Jordan </h1>
+            <img src="imagenes/frase1-1200x717.jpg" 
+                alt="El talento gana partidos, pero el trabajo en equipo y la 
+                inteligencia ganan campeonatos. Michael Jordan." >
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div class="contenedor">
+            <h1>Dejanos tus comentarios</h1>
+            <form action="" id="formularioContacto" method="get" class="autoajustar">
+                <div class="autoajustar mitad izquierda">
+                <p>
+                    <label for="nombre" class="etiqueta-formulario">Nombre
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input type="text" name="inNombre" id="nombre"
+                        placeholder="Escribe tu nombre">
+                        <!-- required="obligatorio" -->
+                </p>
+
+                <p>Sexo <span class="obligatorio">*</span>
+                    <br><input type="radio" name="selectorSexo" id="hombre" value="Hombre">
+                        <label for="hombre" class="etiqueta-selector">Hombre</label>
+                    <br><input type="radio" name="selectorSexo" id="mujer" value="Mujer">
+                        <label for="mujer" class="etiqueta-selector">Mujer</label>
+                    <br><input type="radio" name="selectorSexo" id="otro" value="Otro">
+                        <label for="otro" class="etiqueta-selector">Otro</label>
+                </p>
+        
+                <p>
+                    <label for="email" class="etiqueta-formulario">Email
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input type="email" name="inEmail" id="email" 
+                        placeholder="Escribe tu dirección de Email">
+                </p>
+                
+                <p>
+                    <label for="asunto" class="etiqueta-formulario">Asunto
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input type="text" name="inAsunto" id="asunto"
+                        placeholder="Escribe un asunto">
+                </p>
+                </div>
+
+                <div class="autoajustar mitad derecha">
+                <p>
+                    <label for="mensaje" class="etiqueta-formulario">Mensaje
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <textarea name="introducir_mensaje" class="texto_mensaje"
+                        id="mensaje" placeholder="Escribe aquí tu comentario..."></textarea>
+                </p>
+                
+                </div>
+                
+                <button type="submit" id="btnEnviarFormContacto" >
+                    Enviar
+                </button>
+                
+                <p class="aviso">
+                    <span class="obligatorio">*</span> Campos obligatorios
+                </p>
+
+                <p id="resultado"> </p>
+        
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="contenedor">
+            <i class="fa-regular fa-copyright"></i>Copyright <span id="anioActual"></span>. 
+            Diseñado por <i class="fa-brands fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/nahueltarello/" 
+                title="Perfil en LinkedIn de Nahuel Tarello" 
+                target="_blank">Nahuel Tarello</a><br />
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a><br>
+            <a href="mailto: nahuel.tarello@gmail.com">Contactanos</a><br>
+        </div>
+    </footer>
+    <script src="./env.js"></script>
+</body>
+
+</html>

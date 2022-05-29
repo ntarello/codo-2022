@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Michael Jordan</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/1f9b738dbf.js" crossorigin="anonymous"></script>
+    
+    <!-- Cargo mapa usando API de Google Maps -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUPmP7A9OXHqVHiDsy3ThlDJ9hVf5FoBU&callback=cargaMapa&libraries=&v=weekly"></script>
+    <!-- The callback parameter executes the initMap function after the API loads. 
+        The defer attribute allows the browser to continue rendering the rest of 
+        your page while the API loads and only executes the script after the HTML 
+        document has been fully parsed.  -->
+
+    <script>
+        function cargaMapa() {
+            const coordenadas_mapa = { lat: 42.201253, lng: -87.837829 };
+            const coordenadas_casa = { lat: 42.201707, lng: -87.838084 };
+            const mapOptions = {
+                zoom: 18,
+                center: coordenadas_mapa, //new google.maps.LatLng(42.200938,-87.8409747)
+                mapTypeId: "satellite"
+            };
+            const map = new google.maps.Map(document.getElementById('lienzoMapa'), mapOptions);
+            const marker = new google.maps.Marker({
+                position: coordenadas_casa,
+                map: map,
+            });
+        }
+        // google.maps.event.addDomListener(window, 'load', cargaMapa);
+    </script>
+
+</head>
+<body>
+    <header>
+        <div class="contenedor contenedor-header">
+            <img id="logo" src="imagenes/jordan-logo.jpg" alt="Logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html" title="Página Principal">INICIO</a></li>
+                    <li><a href="bio.html" title="Ver Biografía">BIOGRAFIA</a></li>
+                    <li><a href="galeria.html" title="Ver Galería">GALERIA</a></li>
+                    <li><a href="logros.html" title="Ver Logros">LOGROS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="contenedor">
+            <h1> Biografía </h1>
+        </div>
+        <section>
+            <h2>Comienzos</h2>
+            <article class="contenedor">
+                <h2></h2>
+                <p>Michael de <span id="edad"></span> años, hijo de James y Deloris Jordan, nació en Brooklyn, Nueva York, el <span id="dianac">17</span> de <span id="mesnac">febrero</span> de <span id="anionac">1963</span>. Su familia se mudó a Wilmington, Carolina del Norte, cuando él era niño. Estudió en la Ogden Elementary School, y posteriormente asistió a la preparatoria Emsley A. Laney, donde, debido a sus impresionantes condiciones atléticas, jugó al baloncesto, béisbol y fútbol americano. Sin embargo, fue apartado del equipo de baloncesto en su segundo año porque para su altura (1,80 metros) estaba aparentemente subdesarrollado. El verano siguiente, creció 10 centímetros y se entrenó rigurosamente.​ En su año senior en Laney High, promedió un triple-doble: 29,2 puntos, 11,6 rebotes y 10,1 asistencias, y fue seleccionado en el McDonald's All-American Team.​</p>
+            </article>
+            <article class="contenedor">
+                <h3>Universidad</h3>
+                <p>Jordan recibió una beca para jugar al baloncesto en la Universidad de North Carolina en la temporada 1981-82, donde se especializó en geografía. En su primer año fue entrenado por el mítico Dean Smith, y fue nombrado el mejor jugador novato de la temporada (ACC Freshman of the Year), promediando 13,4 puntos por partido con un 53,4% en tiros de campo.​ Por entonces, Jordan era prácticamente un jugador dominante en la pista aunque, aun así, los Tar Heels no estaban liderados por él, sino por James Worthy, futuro integrante del Salón de la Fama. En la final del Campeonato de la NCAA de 1982 ante la Universidad de Georgetown, Jordan dio la victoria a los Tar Heels con una canasta de dos puntos en suspensión a escasos segundos del final para llevarse el campeonato, el primer éxito en su impecable carrera profesional. En el equipo rival se encontraba el pívot Patrick Ewing, futuro jugador de New York Knicks que asistiría, aunque en distinto bando, a noches mágicas en el Madison Square Garden.</p>
+                <p>Posteriormente fue elegido All-American de la NCAA en las temporadas 1982-83 y 1983-84, y ganó el premio al mejor jugador universitario del año (Naismith College Player of the Year) y el Premio John R. Wooden en la temporada 1983-1984. Abandonó la universidad de ese mismo año para presentarse al Draft de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr>. Los Houston Rockets eligieron a Hakeem Olajuwon y los Portland Trail Blazers a Sam Bowie, tras lo cual los Chicago Bulls seleccionaron a Jordan en la tercera posición. Jordan volvería a estudiar a la universidad en 1986 para graduarse definitivamente en geografía.</p>
+            </article>
+        </section>
+        <hr>
+        <section style="background-color:rgb(255, 255, 235);">
+            <h2>Carrera profesional</h2>
+            <article class="contenedor">
+                <h3>Chicago Bulls</h3>
+                <p>Jordan comenzó su carrera profesional en el baloncesto cuando fue seleccionado por los Chicago Bulls en 1984. Fue la tercera selección general, detrás de Hakeem Olajuwon, quien fue seleccionado primero por los Houston Rockets, y Sam Bowie, elegido por los Portland Trail Blazers; el draft también contó con los jugadores legendarios John Stockton y Charles Barkley.</p>
+                <p>Jordan pronto demostró su valía en la cancha. Ayudó al equipo a llegar a los playoffs y anotó un promedio de 28,2 puntos por partido esa temporada. Por sus esfuerzos, <span style="color:royalblue;">Jordan recibió el premio al Novato del Año de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr> y fue seleccionado para el Juego de Estrellas</span>.</p>
+                <p>En su segunda temporada, Jordan debió ausentarse debido a una lesión en el pie. Sin embargo, a pesar de su baja, los Bulls terminaron la campaña con un 30-52 y fueron eliminados por Boston Celtics en la primera ronda por 3-0. Jordan se recuperó a tiempo para jugar la postemporada, a pesar de no poder evitar la eliminación de su equipo ante la máquina imparable que eran los Celtics de Larry Bird. Aun así, el segundo partido entró en la historia de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr> debido a la soberana actuación individual de Michael Jordan, la cual lo convirtió en el jugador que más puntos ha anotado en un partido de eliminatorias, con 63. Tras el partido, que se decidió en la prórroga, las palabras de Larry Bird no podían resumir mejor el increíble partido realizado por Jordan: <q>he visto a Dios disfrazado de jugador de baloncesto</q>.</p>
+                <p>A la temporada siguiente, ya recuperado totalmente de su lesión, consiguió uno de los promedios anotadores más altos de la historia de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr>, con 37,1 por partido, siendo el único jugador aparte de Wilt Chamberlain en anotar más de 3000 puntos en una sola temporada. A pesar de sus grandes números, Magic Johnson le arrebató el MVP de forma clara por 733 puntos frente a los 449 de Jordan. Los Bulls ganaron 40 partidos y se colaron en las eliminatorias por tercer año consecutivo. Sin embargo, de nuevo fueron barridos por los Celtics.</p>
+                <p>A fines de la década de 1980, los Chicago Bulls se estaban convirtiendo rápidamente en una fuerza a tener en cuenta, y Jordan fue una parte fundamental del éxito del equipo.</p>
+                <p>Los Bulls llegaron a las Finales de la Conferencia Este en 1990 y ganaron su primer campeonato de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr> al año siguiente al derrotar a Los Angeles Lakers.<span style="color:royalblue;"> Jordan era bien conocido en ese entonces por su atletismo superior en la cancha y por sus habilidades de liderazgo</span>.</p>
+                <p>En 1992, los Chicago Bulls vencieron a los Portland Trail Blazers para ganar su segundo campeonato de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr>. El equipo logró su tercer campeonato al año siguiente, dominando en el mundo del baloncesto.</p>
+                <p>Después de una breve temporada en el béisbol de ligas menores, en marzo de 1995 Jordan regresó a la cancha de baloncesto para los Chicago Bulls. Regresó aún más fuerte al año siguiente, promediando 30.4 puntos por juego para llevar a los Bulls a un récord de 72 victorias en temporada regular antes de que derrotaran a los Seattle SuperSonics por el campeonato de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr>.</p>
+                <p>Chicago casi igualó el récord del año anterior con 69 victorias en 1996-97, una temporada que terminó con una victoria de seis juegos sobre Utah Jazz en las Finales de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr>. Los dos equipos se enfrentaron nuevamente por el campeonato en 1998, y Jordan lanzó el tiro ganador en el Juego 6 para reclamar su sexto título de la <abbr title="Asociación Nacional de Baloncesto">NBA</abbr>.</p>
+            </article>
+            <article class="contenedor">
+                <h3>Washington Wizards</h3>
+                <p>Después de su segundo retiro del baloncesto en 1999, Jordan se unió a los Washington Wizards en 2000 como copropietario y presidente de operaciones de baloncesto.</p>
+                <p>En el otoño de 2001, Jordan renunció a estos roles para regresar a la corte una vez más. Jugó para los Wizards durante dos temporadas antes de retirarse definitivamente en 2003.</p>
+            </article>
+            <article class="contenedor">
+                <h3>Olympics</h3>
+                <p>Durante el verano de 1984, Jordan hizo su primera aparición en los Juegos Olímpicos como miembro del equipo olímpico de baloncesto de EE. UU. El equipo ganó el oro en los juegos de ese año, que se llevaron a cabo en Los Ángeles.</p>
+                <p>Más tarde, <span style="color:royalblue;"> Jordan ayudó al equipo estadounidense a llevarse a casa la medalla de oro en los Juegos Olímpicos de 1992</span>, celebrados en Barcelona, España.</p>
+            </article>
+        </section>
+        <hr>
+        <section>
+            <h2>Su retiro del basketball</h2>
+            <article class="contenedor">
+                <h3></h3>
+                <p>Durante los 19 años transcurridos desde que comenzó su carrera profesional en el baloncesto, Jordan se retiró del deporte tres veces. Se retiró por primera vez en 1993 y nuevamente en 1998, luego finalmente colgó su camiseta definitivamente en 2003.</p>
+            </article>
+
+        </section>
+
+        <div class="contenedor" >
+            <div id="lienzoMapa" ></div>
+            La legendaria propiedad de siete acres de la superestrella <br> <cite>(2700 Point Dr, Highland Park, Illinois, EEUU)</cite>
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <i class="fa-regular fa-copyright"></i>Copyright <span id="anioActual"></span>. 
+            Diseñado por <i class="fa-brands fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/nahueltarello/" 
+                title="Perfil en LinkedIn de Nahuel Tarello" 
+                target="_blank">Nahuel Tarello</a><br />
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a><br>
+            <a href="mailto: nahuel.tarello@gmail.com">Contactanos</a><br>
+        </div>
+    </footer>
+
+    <script src="./env.js"></script>
+    <script>
+        // Calculo edad a partir de la fecha actual
+        diaNacimiento = document.getElementById("dianac").innerText;
+        mesNacimiento = document.getElementById("mesnac").innerText;
+        anioNacimiento = document.getElementById("anionac").innerText;
+        fechaNacimiento = new Date(anioNacimiento+"-"+mesNacimiento+"-"+diaNacimiento);
+        edad = fechaActual.getFullYear() - anioNacimiento;
+        mes = fechaActual.getMonth() - fechaNacimiento.getMonth();
+
+        if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNacimiento.getDate())) {
+            edad--;
+        }
+        // Actualizo la edad en el formulario
+        document.getElementById("edad").innerHTML = edad;
+        
+    </script>
+
+</body>
+
+</html>
